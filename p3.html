@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 3</title>
+    <link rel="stylesheet" href="tabla.css">
+    
+</head>
+
+
+
+<body>
+
+    <br><br>
+    <div>
+        <h1 style="text-align: center;"> FETCH</h1>
+        <br>
+        <button id="boton" >Petición de Información</button>
+    </div>
+
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+
+        <tbody id="rkt">
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
+
+
+<script>
+    let url = "https://jsonplaceholder.typicode.com/todos";
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+
+            document.getElementById("boton").addEventListener("click", function () {
+                mostrar(data);
+            });
+        })
+
+        .catch((rej) => {
+
+            console.log("hubo un error");
+
+        })
+
+
+    function mostrar(data) {
+        for (const trp of data) {
+            console.log(data);
+            rkt.innerHTML += `
+                        <tr>
+                            <td>${trp.userId}</td>
+                            <td>${trp.id}</td>
+                            <td>${trp.title}</td>
+                            <td>${trp.completed}</td>
+                        </tr>
+                    `
+        }
+
+    }
+
+
+
+
+</script>
